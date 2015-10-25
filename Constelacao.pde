@@ -1,38 +1,27 @@
-float distance = 0;
 int time = 0;
-int interval_born = 1000;
+int interval_born = 5000;
 
 Star estrela;
 ArrayList<Star> constelacao;
 
 void setup() {
   fullScreen();
-  smooth();
   constelacao = new ArrayList<Star>();
-  constelacao.add(new Star(random(width), distance));
-
+  constelacao.add(new Star(mouseX, mouseY));
 }
 
 void draw() {
   background(255);
   if (time >= interval_born) {
     time = 0;
-    constelacao.add(new Star(random(width), distance));
+    constelacao.add(new Star(mouseX, mouseY));
     println(constelacao.size());
-  }
-  
-  if (distance > height) {
-     distance = 0; 
   }
   
   for(int i = 0; i < constelacao.size();) {
     estrela = constelacao.get(i);
-    //delay(50);
-    //gota.distance = distance;
-    estrela.display();
+    estrela.run();
     i++;
   }
-
-  distance = distance + 50;
-  time = time + 1000;
+  time = time + 100;
 }
