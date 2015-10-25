@@ -1,5 +1,5 @@
 int time = 0;
-int interval_born = 5000;
+int interval_born = 500;
 
 Star estrela;
 ArrayList<Star> constelacao;
@@ -7,14 +7,14 @@ ArrayList<Star> constelacao;
 void setup() {
   fullScreen();
   constelacao = new ArrayList<Star>();
-  constelacao.add(new Star(mouseX, mouseY));
+  constelacao.add(new Star(random(width), random(height)));
 }
 
 void draw() {
   background(255);
   if (time >= interval_born) {
     time = 0;
-    constelacao.add(new Star(mouseX, mouseY));
+    constelacao.add(new Star(random(width), random(height)));
     println(constelacao.size());
   }
   
